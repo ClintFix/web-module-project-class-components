@@ -3,23 +3,23 @@ import ToDoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
 
 //dummy to-do data
-const toDos = [
-  {
-    name: 'Add functionality',
-    id: 0,
-    completed: false,
-  },
-  {
-    name: 'Add styling',
-    id: 1,
-    completed: false,
-  },
-  {
-    name: 'Submit project',
-    id: 2,
-    completed: false,
-  }
-]
+// const toDos = [
+//   {
+//     name: 'Add functionality',
+//     id: 0,
+//     completed: false,
+//   },
+//   {
+//     name: 'Add styling',
+//     id: 1,
+//     completed: false,
+//   },
+//   {
+//     name: 'Submit project',
+//     id: 2,
+//     completed: false,
+//   }
+// ]
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -29,7 +29,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      toDos: toDos,
+      toDos: [],
     }
   }
 
@@ -63,17 +63,13 @@ class App extends React.Component {
   // class method: remove items
   removeItems = () => {
     this.setState({
-      toDos: this.state.toDos.filter(item => {
-        if (!item.completed) {
-          return item;
-        }
-      })
+      toDos: this.state.toDos.filter(item => item.completed === false)
     })
   }
 
   render() {
     return (
-      <div>
+      <div  className='to-do-app'>
         <h2>To-Do List!</h2>
         <ToDoList toggleItem={this.toggleItem} toDos={this.state.toDos} />
         <TodoForm addItem={this.addItem} removeItems={this.removeItems} />
