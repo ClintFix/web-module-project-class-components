@@ -1,6 +1,8 @@
 import React from 'react';
 import ToDoList from './components/TodoList'
+import TodoForm from './components/TodoForm'
 
+//dummy to-do data
 const toDos = [
   {
     name: 'Add functionality',
@@ -33,7 +35,14 @@ class App extends React.Component {
 
   // class method: Add item
   addItem = (itemName) => {
-    
+    const newToDo = {
+      name: itemName,
+      id: new Date(),
+      completed: false,
+    }
+    this.setState({
+      toDos: [...this.state.toDos, newToDo],
+    });
   }
   // class method: toggle item
   toggleItem = (itemId) => {
@@ -60,6 +69,7 @@ class App extends React.Component {
       <div>
         <h2>To-Do List!</h2>
         <ToDoList toggleItem={this.toggleItem} toDos={this.state.toDos}/>
+        <TodoForm addItem={this.addItem}/>
       </div>
     );
   }
