@@ -4,17 +4,17 @@ import ToDoList from './components/TodoList'
 const toDos = [
   {
     name: 'Add functionality',
-    id: null,
+    id: 0,
     completed: false,
   },
   {
     name: 'Add styling',
-    id: null,
+    id: 1,
     completed: false,
   },
   {
     name: 'Submit project',
-    id: null,
+    id: 2,
     completed: false,
   }
 ]
@@ -37,7 +37,18 @@ class App extends React.Component {
   }
   // class method: toggle item
   toggleItem = (itemId) => {
-
+    this.setState({
+      toDos: this.state.toDos.map(item => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            completed: !item.completed,
+          }
+        } else {
+          return item;
+        }
+      })
+    })
   }
   // class method: remove items
   removeItems = () => {

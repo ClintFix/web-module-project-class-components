@@ -1,5 +1,6 @@
 // This component takes in the todo data (mapped in todolist) and displays the task
 import React from 'react';
+import "./Todo.css"
 
 const ToDo = (props) => {
     return (

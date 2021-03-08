@@ -1,0 +1,10 @@
+.item {
+    color: red;
+    cursor: pointer;
+}
+
+.purchased {
+    color: black;
+    text-decoration: line-through;
+    cursor: pointer;
+}
