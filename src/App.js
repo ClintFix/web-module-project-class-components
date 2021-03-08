@@ -44,6 +44,7 @@ class App extends React.Component {
       toDos: [...this.state.toDos, newToDo],
     });
   }
+
   // class method: toggle item
   toggleItem = (itemId) => {
     this.setState({
@@ -61,15 +62,21 @@ class App extends React.Component {
   }
   // class method: remove items
   removeItems = () => {
-
+    this.setState({
+      toDos: this.state.toDos.filter(item => {
+        if (!item.completed) {
+          return item;
+        }
+      })
+    })
   }
 
   render() {
     return (
       <div>
         <h2>To-Do List!</h2>
-        <ToDoList toggleItem={this.toggleItem} toDos={this.state.toDos}/>
-        <TodoForm addItem={this.addItem}/>
+        <ToDoList toggleItem={this.toggleItem} toDos={this.state.toDos} />
+        <TodoForm addItem={this.addItem} removeItems={this.removeItems} />
       </div>
     );
   }
